@@ -5,20 +5,9 @@ import openpyxl
 import PyPDF2
 import os
 
-RESOURCE_DIR = os.path.join(os.path.dirname(__file__), '../resources')
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+RESOURCE_DIR = os.path.join(BASE_DIR, 'resources')
 ZIP_PATH = os.path.join(RESOURCE_DIR, 'wedding_files.zip')
-
-PDF_PATH = os.path.join(RESOURCE_DIR, 'sample.pdf')
-XLSX_PATH = os.path.join(RESOURCE_DIR, 'sample.xlsx')
-CSV_PATH = os.path.join(RESOURCE_DIR, 'sample.csv')
-
-
-def test_create_zip_from_existing_files():
-    with zipfile.ZipFile(ZIP_PATH, 'w') as zf:
-        zf.write(PDF_PATH, arcname="sample.pdf")
-        zf.write(XLSX_PATH, arcname="sample.xlsx")
-        zf.write(CSV_PATH, arcname="sample.csv")
-    assert os.path.exists(ZIP_PATH)
 
 
 def test_zip_contains_all_files():
